@@ -2,7 +2,18 @@ name: Events Demo 1
 on:
   pull_request:
     type:
-      - opened 
+      - opened
+  workflow_dispatch:
+  push:
+    # workflow runs on spesific branches
+    branches:
+      - main
+      # - 'dev-*' # dev-new
+      # - 'feat/***' # feat/new feat/new/button
+    # Means this events workflow will be activated if anything push on spesific branches, if we did not changes any workflow folder in the
+    # github folder
+    paths-ignore:
+      - '.github/workflows/*' 
 jobs:
   deploy:
     runs-on: ubuntu-latest
